@@ -56,3 +56,21 @@
 }
 
 @layer utilities {}
+
+.header-nav-outer {
+  clip-path: inset(0px 0px var(--clip-y) 0px);
+
+  @screen m {
+    clip-path: unset; 
+  }
+}
+
+.header-nav-inner {
+  clip-path: inset(0px 0px calc(var(--clip-y) + 0.2rem) 0px);
+  visibility: var(--nav-visibility);
+
+  @screen m {
+    visibility: visible;
+    clip-path: unset; 
+  }
+}

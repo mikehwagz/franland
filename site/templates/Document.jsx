@@ -1,7 +1,9 @@
 import { h } from 'hyposcript'
 import manifest from '../manifest.json'
+import Header from './Header'
+import Footer from './Footer'
 
-export default function Document({ children }) {
+export default function Document({ site, children }) {
   return `<!DOCTYPE html>${(
     <html lang="en">
       <head>
@@ -39,15 +41,13 @@ export default function Document({ children }) {
       </head>
       <body>
         <main a-root>
-          <div a-page>{children}</div>
+          <div a-page>
+            <Header links={site.menuLinks} />
+            <main>{children}</main>
+            <Footer links={site.footerLinks} copyright={site.copyrightText} />
+          </div>
         </main>
       </body>
     </html>
   )}`
 }
-
-/* <script>{`
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
-  }
-`}</script> */

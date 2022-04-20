@@ -4,23 +4,23 @@ import * as queries from './queries'
 
 export async function getSlugs(type) {
   return await getSanityClient().fetch(
-    groq`*[_type == '${type}' && defined(slug.current) && length(modules) > 0][].slug.current`,
+    groq`*[_type == '${type}' && defined(slug.current)][].slug.current`,
   )
 }
 
-export async function getPage({ slug, preview }) {
+export async function getHomepage({ preview }) {
   const props = await getSanityClient(preview).fetch(groq`{
     ${queries.site},
-    'page': *[_type == 'page' && slug.current == '${slug}' && length(modules) > 0] | order(_updatedAt desc)[0] ${queries.page},
+    'page': *[_type == 'site'] | order(_updatedAt desc)[0].homepage-> ${queries.page},
   }`)
 
   return props
 }
 
-export async function getProject({ slug, preview }) {
+export async function getPage({ slug, preview }) {
   const props = await getSanityClient(preview).fetch(groq`{
     ${queries.site},
-    'page': *[_type == 'project' && slug.current == '${slug}' && length(modules) > 0] | order(_updatedAt desc)[0] ${queries.project},
+    'page': *[_type == 'page' && slug.current == '${slug}'] | order(_updatedAt desc)[0] ${queries.page},
   }`)
 
   return props

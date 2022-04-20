@@ -1,10 +1,83 @@
 import { component } from 'picoapp'
-import { toggle } from 'martha'
+import choozy from 'choozy'
+import { on, rect, noop } from 'martha'
+import { createFocusTrap } from 'focus-trap'
 
 export default component((node, ctx) => {
-  ctx.on('tick', ({ wh }) => {
-    toggle(node, '-translate-y-full', window.scrollY < wh)
+  const { backdrop, links, btn, btnIcon } = choozy(node)
+
+  ctx.on('resize', () => {
+    gsap.set(node, {
+      '--nav-height':
+        links.reduce((acc, el) => acc + rect(el).height, 0) + 'px',
+    })
   })
 
-  return () => {}
+  const trap = createFocusTrap(node, {
+    escapeDeactivates: false,
+  })
+
+  const tl = gsap.timeline({
+    paused: true,
+    defaults: {
+      duration: 0.5,
+      ease: 'quart',
+    },
+  })
+
+  let offClick = on([btn, backdrop], 'click', () => {
+    ctx.emit('menu:toggle', { isMenuOpen: !ctx.getState().isMenuOpen })
+  })
+
+  let offKeydown = noop
+
+  ctx.on('menu:toggle', ({ isMenuOpen }) => {
+    tl.clear()
+
+    if (isMenuOpen) {
+      offKeydown = on(document, 'keydown', ({ key }) => {
+        if (key === 'Escape') {
+          offKeydown()
+          offKeydown = noop
+          ctx.emit('menu:toggle', { isMenuOpen: false })
+        }
+      })
+
+      tl.set(node, { '--nav-visibility': 'visible' }).add(() => trap.activate())
+    } else {
+      trap.deactivate()
+    }
+
+    tl.to(
+      backdrop,
+      {
+        autoAlpha: isMenuOpen ? 1 : 0,
+      },
+      0,
+    )
+      .to(
+        btnIcon,
+        {
+          rotation: isMenuOpen ? -45 : 0,
+        },
+        0,
+      )
+      .to(
+        node,
+        {
+          '--clip-y': isMenuOpen ? 0 : 100,
+        },
+        0,
+      )
+
+    if (!isMenuOpen) {
+      tl.set(node, { '--nav-visibility': 'hidden' })
+    }
+
+    tl.restart()
+  })
+
+  return () => {
+    offClick()
+  }
 })

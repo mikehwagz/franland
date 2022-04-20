@@ -1,73 +1,42 @@
 import { h } from 'hyposcript'
+import Logo from './Logo'
+import Link from './Link'
 
-export default function Header() {
+export default function Header({ links }) {
   return (
-    <header class="fixed top-0 inset-x-0 z-9">
-      <div class="m:hidden absolute top-0 inset-x-0 h-screen bg-[rgba(47,51,54,0.6)] opacity-0 pointer-events-none js-backdrop"></div>
+    <header
+      class="fixed top-0 inset-x-0 z-9 [--clip-y:100%] m:[--clip-y:0%] [--nav-visibility:hidden]"
+      data-component="header"
+    >
+      <div
+        class="m:hidden absolute top-0 inset-x-0 h-screen bg-[rgba(47,51,54,0.6)] js-backdrop"
+        style={{ opacity: 0, visibility: 'hidden' }}
+      ></div>
       <div class="relative flex justify-between w-full h-75 m:h-90 bg-linen border-b-2 px-15 m:px-25">
         <a href="/" class="h-full block pt-20 m:pt-25 pb-22 m:pb-27">
-          <svg class="h-full w-auto" viewBox="0 0 184 38" fill="none">
-            <path
-              d="M12.699 37.4858V16.1461H19.8745V10.0271H12.699V8.69012C12.699 6.78755 13.9895 6.01624 15.9512 6.01624C16.8804 6.01624 17.9128 6.1705 18.6871 6.47902V0.822732C17.4998 0.308524 16.0028 0 14.2477 0C8.51762 0 5.57517 3.08525 5.57517 8.53586V10.0271H0V16.1461H5.57517V37.4858H12.699Z"
-              class="fill-current"
-            />
-            <path
-              d="M28.1553 24.1678C28.1553 18.1001 32.2335 16.6604 38.3249 17.1231V9.71854C33.8854 9.71854 29.6008 11.8268 27.5875 15.3234V10.0271H20.9799V37.4858H28.1553V24.1678Z"
-              class="fill-current"
-            />
-            <path
-              d="M55.8868 37.4858H61.7201V20.2084C61.7201 13.4723 57.4871 9.51285 50.26 9.51285C43.6008 9.51285 39.0064 13.6265 38.5935 19.9513H45.0462C45.3043 16.866 47.1627 15.0663 50.26 15.0663C53.2541 15.0663 55.0092 16.866 55.0092 19.9513V21.5968C53.3057 21.3911 51.9635 21.2882 50.4149 21.2882C42.3619 21.2882 38.0256 24.1678 38.0256 29.5156C38.0256 34.6576 41.8456 38 47.5757 38C51.3441 38 54.08 36.6631 55.8868 34.092V37.4858ZM44.7881 29.3099C44.7881 26.8417 46.8014 25.5562 50.8795 25.5562C52.1184 25.5562 53.3057 25.659 55.0092 25.9161V27.8701C55.0092 31.0582 52.7895 33.0636 49.1243 33.0636C46.44 33.0636 44.7881 31.6238 44.7881 29.3099Z"
-              class="fill-current"
-            />
-            <path
-              d="M72.4978 22.5223C72.4978 18.1001 74.924 15.8376 77.7632 15.8376C81.0154 15.8376 82.6157 18.1001 82.6157 22.1624V37.4858H89.7395V19.7456C89.7395 13.1123 85.9195 9.51285 80.3959 9.51285C76.7824 9.51285 73.9432 11.2097 71.9299 13.935V10.0271H65.3223V37.4858H72.4978V22.5223Z"
-              class="fill-current"
-            />
-            <path
-              d="M100.568 37.4858V0.565629H93.3414V37.4858H100.568Z"
-              class="fill-current"
-            />
-            <path
-              d="M120.838 37.4858H126.671V20.2084C126.671 13.4723 122.438 9.51285 115.211 9.51285C108.552 9.51285 103.957 13.6265 103.544 19.9513H109.997C110.255 16.866 112.114 15.0663 115.211 15.0663C118.205 15.0663 119.96 16.866 119.96 19.9513V21.5968C118.257 21.3911 116.914 21.2882 115.366 21.2882C107.313 21.2882 102.977 24.1678 102.977 29.5156C102.977 34.6576 106.797 38 112.527 38C116.295 38 119.031 36.6631 120.838 34.092V37.4858ZM109.739 29.3099C109.739 26.8417 111.752 25.5562 115.83 25.5562C117.069 25.5562 118.257 25.659 119.96 25.9161V27.8701C119.96 31.0582 117.74 33.0636 114.075 33.0636C111.391 33.0636 109.739 31.6238 109.739 29.3099Z"
-              class="fill-current"
-            />
-            <path
-              d="M137.449 22.5223C137.449 18.1001 139.875 15.8376 142.714 15.8376C145.966 15.8376 147.567 18.1001 147.567 22.1624V37.4858H154.69V19.7456C154.69 13.1123 150.87 9.51285 145.347 9.51285C141.733 9.51285 138.894 11.2097 136.881 13.935V10.0271H130.273V37.4858H137.449V22.5223Z"
-              class="fill-current"
-            />
-            <path
-              d="M156.486 23.7564C156.486 31.7781 161.286 38 168.72 38C172.282 38 175.276 36.406 177.444 33.5264V37.4858H184V0.565629H176.876V13.5751C174.811 10.9526 172.024 9.51285 168.72 9.51285C161.286 9.51285 156.486 15.6319 156.486 23.7564ZM163.867 23.7564C163.867 18.5115 166.81 15.8376 170.32 15.8376C173.83 15.8376 176.825 18.4601 176.825 23.6536C176.825 28.8471 173.882 31.6238 170.32 31.6238C166.81 31.6238 163.867 28.8985 163.867 23.7564Z"
-              class="fill-current"
-            />
-          </svg>
+          <Logo cx="h-full w-auto" />
         </a>
-        <nav
-          class="absolute inset-x-0 top-75 m:static h-full m:flex items-center gap-x-50 leading-100 js-nav"
-          style={{ clipPath: `inset(0px 0px -7.5rem 0px)` }}
-        >
-          <a
-            class="w-full m:w-auto px-15 m:px-0 py-20 m:py-0 m:h-full flex items-center border-b-2 m:border-b-0 bg-[#CDE4F5] m:bg-[transparent] group js-links"
-            href="#0"
-          >
-            <div class="w-16 h-16 rounded-full border-2 mr-10 group-hover:bg-charcoal"></div>
-            Projects
-          </a>
-          <a
-            class="w-full m:w-auto px-15 m:px-0 py-20 m:py-0 m:h-full flex items-center border-b-2 m:border-b-0 bg-[#FFCCFD] m:bg-[transparent] group js-links"
-            href="#0"
-          >
-            <div class="w-16 h-16 rounded-full border-2 mr-10 group-hover:bg-charcoal"></div>
-            Info
-          </a>
-        </nav>
-        <button class="m:hidden h-full px-15 absolute top-0 right-0">
-          <svg class="w-28" viewBox="0 0 28 27" fill="none">
+        <button class="m:hidden h-full px-15 absolute top-0 right-0 js-btn">
+          <svg class="w-28 js-btnIcon" viewBox="0 0 28 27" fill="none">
             <path
               d="M16.632 27V15.8276H28V11.0629H16.632V0H11.368V11.0629H0V15.8276H11.368V27H16.632Z"
               class="fill-current"
             />
           </svg>
         </button>
+        <div class="header-nav-outer absolute m:static inset-x-0 top-75 bg-charcoal m:bg-transparent">
+          <nav class="header-nav-inner h-[var(--nav-height)] m:h-full m:flex items-center gap-x-50 leading-100">
+            {links.map(link => (
+              <Link
+                className="w-full m:w-auto px-15 m:px-0 pt-20 m:pt-0 pb-20 last:pb-22 m:!pb-0 m:h-full flex items-center border-b-2 last:border-b-0 m:!border-b-0 odd:bg-[#CDE4F5] even:bg-[#FFCCFD] m:!bg-transparent group focus-visible:underline focus:outline-none js-links"
+                link={link}
+              >
+                <div class="w-16 h-16 rounded-full border-2 mr-10 group-hover:bg-charcoal"></div>
+                {link.title}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   )

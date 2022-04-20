@@ -1,22 +1,26 @@
 import { h } from 'hyposcript'
+import Link from './Link'
 
-export default function Footer() {
+export default function Footer({ links, copyright }) {
   return (
-    <footer class="relative bg-[#FFEC96] m:pt-130 px-15 m:px-25 flex justify-between items-end text-18 m:text-24 leading-133">
+    <footer class="relative bg-[#FFEC96] m:pt-130 px-15 m:px-25 flex justify-between items-end text-14 m:text-24 leading-133">
       <div class="m:flex py-20 m:py-40">
-        <p class="mb-20 m:mb-0 m:mr-55">
-          © Fran Mayo {new Date().getFullYear()}
+        <p class="mb-35 m:mb-0 m:mr-55">
+          {copyright.replaceAll('%s', new Date().getFullYear())}
         </p>
-        <nav class="space-x-35">
-          <a href="#0">Resume</a>
-          <a href="#0">LinkedIn</a>
-          <a href="#0">ahoy@fran.land</a>
+        <nav class="space-x-20 m:space-x-35">
+          {links.map(link => (
+            <Link link={link}>{link.title}</Link>
+          ))}
         </nav>
       </div>
-      <button class="m:py-40 flex absolute m:static top-20 right-15">
+      <button
+        class="m:py-40 flex absolute m:static top-20 right-15"
+        data-component="backToTop"
+      >
         Back to top
         <svg
-          class="w-21 m:w-27 ml-8 m:ml-15"
+          class="w-16 m:w-27 ml-8 m:ml-15"
           viewBox="0 0 27 29"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
