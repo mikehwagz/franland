@@ -1,35 +1,45 @@
+import { customLink } from '../lib/customLink'
+
 export default {
   name: 'site',
   type: 'document',
-  __experimental_actions: ['update', 'publish'],
+  // __experimental_actions: ['update', 'publish'],
   groups: [
-    { name: 'menu', title: 'Menu', default: true },
+    { name: 'settings', title: 'Settings', default: true },
+    { name: 'menu', title: 'Menu' },
     { name: 'footer', title: 'Footer' },
     { name: 'seo', title: 'Default SEO' },
   ],
   fields: [
     {
+      name: 'homepage',
+      type: 'reference',
+      to: [{ type: 'page' }],
+      group: 'settings',
+      validation: Rule => Rule.required(),
+    },
+    customLink({
+      hasTitle: true,
       name: 'menuLinks',
-      type: 'link',
-      validation: Rule => Rule.required().min(3).max(3),
+      additionalFields: [
+        {
+          name: 'hoverText',
+          description:
+            'The title of the link will scramble to the specified text on hover. For the best effect, it should be as close to the same number of characters as possible.',
+          type: 'string',
+        },
+      ],
       group: 'menu',
-    },
-    {
-      name: 'ctas',
-      title: 'CTAs',
-      type: 'link',
-      group: 'menu',
-    },
-    {
-      name: 'footerMarquee',
-      type: 'string',
-      validation: Rule => Rule.required(),
-      group: 'footer',
-    },
-    {
+    }),
+    customLink({
+      hasTitle: true,
       name: 'footerLinks',
-      type: 'link',
-      validation: Rule => Rule.required(),
+      group: 'footer',
+    }),
+    {
+      name: 'copyrightText',
+      description: 'Use %s to insert the current year',
+      type: 'string',
       group: 'footer',
     },
     {

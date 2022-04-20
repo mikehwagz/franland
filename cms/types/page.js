@@ -33,14 +33,6 @@ export default {
       group: 'settings',
     },
     {
-      name: 'themeColor',
-      type: 'color',
-      group: 'settings',
-      options: {
-        disableAlpha: true,
-      },
-    },
-    {
       name: 'modules',
       type: 'modules',
       group: 'modules',

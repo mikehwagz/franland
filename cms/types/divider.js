@@ -9,7 +9,7 @@ export default {
   icon: Icon,
   fields: [
     {
-      name: 'lfg',
+      name: 'dummy',
       type: 'boolean',
       initialValue: true,
       hidden: true,

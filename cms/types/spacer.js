@@ -1,7 +1,7 @@
 import React from 'react'
 import Emoji from 'a11y-react-emoji'
 
-const Icon = () => <Emoji symbol="🛸" />
+const Icon = () => <Emoji symbol="🪐" />
 
 export default {
   name: 'spacer',
