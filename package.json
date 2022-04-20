@@ -1,0 +1,26 @@
+{
+  "name": "franland",
+  "version": "1.0.0",
+  "description": "A personal website for Fran Mayo",
+  "private": true,
+  "workspaces": [
+    "cms",
+    "site"
+  ],
+  "scripts": {
+    "dev:cms": "yarn workspace cms dev",
+    "build:cms": "yarn workspace cms build",
+    "deploy:cms": "yarn workspace cms deploy",
+    "dev": "yarn workspace site dev",
+    "build": "yarn workspace site build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selfawarestudio/franland.git"
+  },
+  "author": "Self Aware LLC",
+  "bugs": {
+    "url": "https://github.com/selfawarestudio/franland/issues"
+  },
+  "homepage": "https://github.com/selfawarestudio/franland#readme"
+}

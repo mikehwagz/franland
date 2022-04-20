@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "project": {
+    "name": "Fran Mayo"
+  },
+  "api": {
+    "projectId": "0ywikrpu",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "@sanity/color-input",
+    "@sanity/production-preview",
+    "media"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./main.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./parts/structure.js"
+    },
+    {
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./parts/resolveProductionUrl.js"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./parts/style.css"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/file/asset-sources",
+      "path": "./parts/assetSources.js"
+    }
+  ]
+}

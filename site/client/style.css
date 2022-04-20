@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'General Sans Medium';
+    src: url('/fonts/GeneralSans-Medium.woff2') format('woff2'),
+      url('/fonts/GeneralSans-Medium.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Besley';
+    src: url('/fonts/Besley-Regular.woff2') format('woff2'),
+      url('/fonts/Besley-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  html {
+    @apply text-[calc(10/375*100vw)] m:text-[calc(10/1536*100vw)];
+  }
+
+  body {
+    @apply font-sans text-32 leading-130 overflow-x-hidden transition-opacity ease-out-expo duration-700 bg-linen text-charcoal;
+  }
+
+  a,
+  button {
+    @apply outline-charcoal;
+  }
+
+  ::selection {
+    @apply bg-charcoal text-linen;
+  }
+
+  [a-page] {
+    visibility: hidden;
+  }
+}
+
+@layer components {
+  .h-screen {
+    height: var(--100-vh, 100vh);
+  }
+}
+
+@layer utilities {}
