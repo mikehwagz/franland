@@ -21,9 +21,9 @@ export default function Scrambler({ data }) {
                 class="font-sans tracking-normal"
                 data-dynamic-text={escape(JSON.stringify(text))}
               >
-                {text[0]}{' '}
-              </span>
-              <br />
+                {text[0]}
+              </span>{' '}
+              <br class="hidden m:inline" />
             </>
           )
         }
