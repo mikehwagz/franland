@@ -4,13 +4,13 @@ export default {
     from?.remove()
     await gsap.to(to, {
       autoAlpha: 1,
-      duration: 0.5,
+      duration: 0,
     })
   },
   async leave({ from }) {
     await gsap.to(from, {
       autoAlpha: 0,
-      duration: 0.5,
+      duration: 0,
     })
   },
 }

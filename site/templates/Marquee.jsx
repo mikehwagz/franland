@@ -3,7 +3,7 @@ import Link from './Link'
 
 export default function Marquee({ data }) {
   return (
-    <div class="pt-100 pb-10">
+    <div class="pt-100 pb-10 overflow-hidden">
       <Link
         class="marquee font-serif text-82 leading-122 tracking-n2"
         data-component="marquee"

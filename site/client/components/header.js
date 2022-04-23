@@ -1,10 +1,19 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on, rect, noop } from 'martha'
+import { on, rect, noop, each, toggle } from 'martha'
 import { createFocusTrap } from 'focus-trap'
 
 export default component((node, ctx) => {
   const { backdrop, links, btn, btnIcon } = choozy(node)
+
+  each(links, link => {
+    const url = new URL(link.getAttribute('href'), window.location.origin)
+    toggle(
+      link.firstElementChild,
+      'bg-charcoal',
+      url.pathname === window.location.pathname,
+    )
+  })
 
   ctx.on('resize', () => {
     gsap.set(node, {
