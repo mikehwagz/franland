@@ -3,10 +3,12 @@ import cx from 'classnames'
 
 import Divider from './Divider'
 import IntroHero from './IntroHero'
+import Scrambler from './Scrambler'
 
 const MODULES = {
   divider: Divider,
   introHero: IntroHero,
+  scrambler: Scrambler,
 }
 
 export default function Module({ data, index }) {
@@ -23,6 +25,7 @@ export default function Module({ data, index }) {
   }
 
   const Component = MODULES[data._type]
+
   return Component ? (
     <section class={cx({ 'pt-75 m:pt-90': index === 0 })}>
       <Component data={data} />

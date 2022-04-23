@@ -3,7 +3,7 @@ import manifest from '../manifest.json'
 import Header from './Header'
 import Footer from './Footer'
 
-export default function Document({ site, children }) {
+export default function Document({ site, themeColor, footerColor, children }) {
   return `<!DOCTYPE html>${(
     <html lang="en">
       <head>
@@ -41,9 +41,15 @@ export default function Document({ site, children }) {
       </head>
       <body>
         <main a-root>
-          <div a-page>
+          <div
+            a-page
+            style={{
+              '--theme-color': themeColor,
+              '--footer-color': footerColor,
+            }}
+          >
             <Header links={site.menuLinks} />
-            <main>{children}</main>
+            <main class="bg-theme">{children}</main>
             <Footer links={site.footerLinks} copyright={site.copyrightText} />
           </div>
         </main>

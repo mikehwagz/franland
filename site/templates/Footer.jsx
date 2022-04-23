@@ -3,7 +3,7 @@ import Link from './Link'
 
 export default function Footer({ links, copyright }) {
   return (
-    <footer class="relative bg-[#FFEC96] m:pt-130 px-15 m:px-25 flex justify-between items-end text-14 m:text-24 leading-133">
+    <footer class="relative bg-footer m:pt-130 px-15 m:px-25 flex justify-between items-end text-14 m:text-24 leading-133">
       <div class="m:flex py-20 m:py-40">
         <p class="mb-35 m:mb-0 m:mr-55">
           {copyright.replaceAll('%s', new Date().getFullYear())}

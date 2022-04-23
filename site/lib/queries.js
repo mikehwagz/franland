@@ -42,6 +42,14 @@ export const modules = groq`{
   _type == 'introHero' => {
     introCopy,
   },
+  _type == 'scrambler' => {
+    content[] {
+      _type,
+      text,
+    },
+    images[] ${image},
+    'backgroundColor': backgroundColor.hex,
+  },
   _type == 'spacer' => {
     size,
   },
@@ -62,8 +70,9 @@ export const site = groq`'site': *[_type == 'site'] | order(_updatedAt desc)[0] 
 export const page = groq`{
   title,
   'slug': slug.current,
-  'isHomepage': *[_type == 'site'][0].homepage._ref == @._id,
   description,
   openGraphImage ${image},
   modules[] ${modules},
+  'themeColor': themeColor.hex,
+  'footerColor': footerColor.hex,
 }`

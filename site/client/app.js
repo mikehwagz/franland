@@ -6,7 +6,7 @@ import header from './components/header'
 import marquee from './components/marquee'
 import img from './components/img'
 import video from './components/video'
-import scramble from './components/scramble'
+import scrambler from './components/scrambler'
 import backToTop from './components/backToTop'
 
 let components = {
@@ -14,7 +14,7 @@ let components = {
   marquee,
   img,
   video,
-  scramble,
+  scrambler,
   backToTop,
 }
 

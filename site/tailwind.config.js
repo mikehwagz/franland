@@ -22,6 +22,8 @@ module.exports = {
         orange: '#DB9111',
         piggy: '#F5E0E8',
         pink: '#E894B5',
+        theme: 'var(--theme-color)',
+        footer: 'var(--footer-color)',
       },
       fontFamily: {
         sans: ['General Sans Medium', 'sans-serif'],

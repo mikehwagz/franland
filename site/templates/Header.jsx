@@ -12,7 +12,7 @@ export default function Header({ links }) {
         class="m:hidden absolute top-0 inset-x-0 h-screen bg-[rgba(47,51,54,0.6)] js-backdrop"
         style={{ opacity: 0, visibility: 'hidden' }}
       ></div>
-      <div class="relative flex justify-between w-full h-75 m:h-90 bg-linen border-b-2 px-15 m:px-25">
+      <div class="relative flex justify-between w-full h-75 m:h-90 bg-theme border-b-2 px-15 m:px-25">
         <a href="/" class="h-full block pt-20 m:pt-25 pb-22 m:pb-27">
           <Logo cx="h-full w-auto" />
         </a>

@@ -33,6 +33,16 @@ export default {
       group: 'settings',
     },
     {
+      name: 'themeColor',
+      type: 'color',
+      group: 'settings',
+    },
+    {
+      name: 'footerColor',
+      type: 'color',
+      group: 'settings',
+    },
+    {
       name: 'modules',
       type: 'modules',
       group: 'modules',
