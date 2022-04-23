@@ -79,5 +79,7 @@ export default component((node, ctx) => {
 
   return () => {
     offClick()
+    offKeydown()
+    trap.deactivate()
   }
 })

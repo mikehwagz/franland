@@ -13,11 +13,7 @@ export default component((node, ctx) => {
 
   const minLength = Math.min(...els.map(el => el._json.length))
 
-  // const offClick = on(node, 'click', () => {
-  //   if (isAnimating) return
-  //   isAnimating = true
-
-  poll(
+  const offPoll = poll(
     5000,
     done => {
       index = wrap(index + 1, minLength)
@@ -42,9 +38,7 @@ export default component((node, ctx) => {
     false,
   )
 
-  // })
-
   return () => {
-    offClick()
+    offPoll()
   }
 })

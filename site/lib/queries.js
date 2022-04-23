@@ -50,9 +50,30 @@ export const modules = groq`{
     images[] ${image},
     'backgroundColor': backgroundColor.hex,
   },
+  _type == 'bigText' => {
+    body,
+  },
+  _type == 'list' => {
+    title,
+    listItems,
+  },
+  _type == 'marquee' => {
+    link[0] ${link()},
+    text,
+  },
   _type == 'spacer' => {
     size,
   },
+}`
+
+export const page = groq`{
+  title,
+  'slug': slug.current,
+  description,
+  openGraphImage ${image},
+  modules[] ${modules},
+  'themeColor': themeColor.hex,
+  'footerColor': footerColor.hex,
 }`
 
 export const site = groq`'site': *[_type == 'site'] | order(_updatedAt desc)[0] {
@@ -65,14 +86,4 @@ export const site = groq`'site': *[_type == 'site'] | order(_updatedAt desc)[0] 
   `)},
   footerLinks[] ${link()},
   copyrightText,
-}`
-
-export const page = groq`{
-  title,
-  'slug': slug.current,
-  description,
-  openGraphImage ${image},
-  modules[] ${modules},
-  'themeColor': themeColor.hex,
-  'footerColor': footerColor.hex,
 }`

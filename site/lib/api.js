@@ -8,7 +8,7 @@ export async function getSlugs(type) {
   )
 }
 
-export async function getHomepage({ preview }) {
+export async function getHomepage({ preview } = {}) {
   const props = await getSanityClient(preview).fetch(groq`{
     ${queries.site},
     'page': *[_type == 'site'] | order(_updatedAt desc)[0].homepage-> ${queries.page},
@@ -17,7 +17,7 @@ export async function getHomepage({ preview }) {
   return props
 }
 
-export async function getPage({ slug, preview }) {
+export async function getPage({ slug, preview } = {}) {
   const props = await getSanityClient(preview).fetch(groq`{
     ${queries.site},
     'page': *[_type == 'page' && slug.current == '${slug}'] | order(_updatedAt desc)[0] ${queries.page},

@@ -6,8 +6,8 @@ export function getStaticPaths() {
 }
 
 export async function handler() {
-  const data = await getHomepage({ preview: false })
+  const props = await getHomepage()
   return {
-    html: Page(data),
+    html: Page(props),
   }
 }

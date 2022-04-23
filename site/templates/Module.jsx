@@ -4,11 +4,17 @@ import cx from 'classnames'
 import Divider from './Divider'
 import IntroHero from './IntroHero'
 import Scrambler from './Scrambler'
+import BigText from './BigText'
+import List from './List'
+import Marquee from './Marquee'
 
 const MODULES = {
   divider: Divider,
   introHero: IntroHero,
   scrambler: Scrambler,
+  bigText: BigText,
+  list: List,
+  marquee: Marquee,
 }
 
 export default function Module({ data, index }) {

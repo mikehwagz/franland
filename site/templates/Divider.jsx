@@ -1,5 +1,5 @@
 import { h } from 'hyposcript'
 
 export default function Divider() {
-  return <hr></hr>
+  return <hr class="border-t-2"></hr>
 }
