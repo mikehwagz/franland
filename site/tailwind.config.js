@@ -26,7 +26,7 @@ module.exports = {
         footer: 'var(--footer-color)',
       },
       fontFamily: {
-        sans: ['General Sans Medium', 'sans-serif'],
+        sans: ['General Sans', 'sans-serif'],
         serif: ['Besley', 'serif'],
       },
       letterSpacing: {

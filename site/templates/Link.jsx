@@ -1,6 +1,12 @@
-import { h } from 'hyposcript'
+import { h as hyposcript } from 'hyposcript'
 
-export default function Link({ className, link, children, ...rest }) {
+export default function Link({
+  className,
+  link,
+  children,
+  h = hyposcript,
+  ...rest
+}) {
   return (
     <a
       href={

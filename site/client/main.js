@@ -18,7 +18,11 @@ async function main() {
   on(document, 'mousemove', mousemove)
   gsap.ticker.add(tick)
 
-  await fonts([{ family: 'General Sans Medium' }, { family: 'Besley' }])
+  await fonts([
+    { family: 'General Sans', options: { weight: 400 } },
+    { family: 'General Sans', options: { weight: 600 } },
+    { family: 'Besley' },
+  ])
 
   const pjax = create({
     transitions: {

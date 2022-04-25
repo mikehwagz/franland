@@ -7,6 +7,7 @@ import Scrambler from './Scrambler'
 import BigText from './BigText'
 import List from './List'
 import Marquee from './Marquee'
+import ProjectCarousels from './ProjectCarousels'
 
 const MODULES = {
   divider: Divider,
@@ -15,6 +16,7 @@ const MODULES = {
   bigText: BigText,
   list: List,
   marquee: Marquee,
+  projectCarousels: ProjectCarousels,
 }
 
 export default function Module({ data, index }) {

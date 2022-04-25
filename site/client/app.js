@@ -8,6 +8,7 @@ import img from './components/img'
 import video from './components/video'
 import scrambler from './components/scrambler'
 import backToTop from './components/backToTop'
+import projectCarousel from './components/projectCarousel'
 
 let components = {
   header,
@@ -16,6 +17,7 @@ let components = {
   video,
   scrambler,
   backToTop,
+  projectCarousel,
 }
 
 let s = size()

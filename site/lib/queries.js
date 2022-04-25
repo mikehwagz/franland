@@ -1,6 +1,6 @@
 import groq from 'groq'
 
-export const link = additionalGroq => groq`{
+export const link = (additionalGroq = '') => groq`{
   _type,
   openInNewTab,
   defined(title) => {
@@ -66,6 +66,24 @@ export const modules = groq`{
   },
   _type == 'spacer' => {
     size,
+  },
+  _type == 'projectCarousels' => {
+    projects[]-> {
+      title,
+      modules[] {
+        _type,
+        ...(${media}),
+        _type == 'richText' => {
+          content[] {
+            ...,
+            markDefs[]{
+              _key,
+              ...(link[0] ${link()}),
+            },
+          },
+        },
+      },
+    },
   },
 }`
 
