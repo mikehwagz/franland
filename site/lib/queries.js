@@ -47,7 +47,10 @@ export const modules = groq`{
       _type,
       text,
     },
-    images[] ${image},
+    images[] {
+      _type,
+      ...(${image}),
+    },
     'backgroundColor': backgroundColor.hex,
   },
   _type == 'bigText' => {

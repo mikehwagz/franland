@@ -33,7 +33,7 @@ export default function Module({ data, index }) {
   const Component = MODULES[data._type]
 
   return Component ? (
-    <section class={cx({ 'pt-75 m:pt-90': index === 0 })}>
+    <section class={cx('relative', { 'pt-75 m:pt-90': index === 0 })}>
       <Component data={data} />
     </section>
   ) : null
