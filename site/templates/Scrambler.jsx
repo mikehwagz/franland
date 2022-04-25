@@ -34,13 +34,13 @@ export default function Scrambler({ data }) {
       </div>
       {images?.length ? (
         <div
-          class="relative aspect-[3/4] w-[60%] m:w-full ml-auto m:ml-0 m:absolute m:-top-15 m:right-100 will-change-transform js-imgWrap"
+          class="relative aspect-[3/4] w-[60%] m:w-[30rem] ml-auto m:ml-0 m:absolute m:-top-15 m:right-100 will-change-transform js-imgWrap"
           style={{ visibility: 'hidden' }}
         >
           {images.map((image, i) =>
             image._type === 'image' ? (
               <div
-                class="absolute inset-0 m:w-[30rem]"
+                class="absolute inset-0"
                 style={{ visibility: 'hidden' }}
                 data-index={i}
               >

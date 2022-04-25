@@ -3,9 +3,9 @@ import Link from './Link'
 
 export default function Marquee({ data }) {
   return (
-    <div class="pt-100 pb-10 overflow-hidden">
+    <div class="pt-40 m:pt-100 pb-60 m:pb-10 overflow-hidden">
       <Link
-        class="marquee font-serif text-82 leading-122 tracking-n2"
+        class="marquee font-serif text-50 m:text-82 leading-122 tracking-n2"
         data-component="marquee"
         style={{ '--speed': 0.8 }}
         data-pause-on-hover
@@ -17,7 +17,7 @@ export default function Marquee({ data }) {
               {data.text.replaceAll(
                 '%s',
                 <svg
-                  class="w-142 mx-50"
+                  class="w-142 mx-40 m:mx-50"
                   viewBox="0 0 142 33"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
