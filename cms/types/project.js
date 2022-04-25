@@ -12,6 +12,7 @@ export default {
     {
       name: 'modules',
       type: 'array',
+      description: 'Recommended media dimensions: 1968x1312',
       of: [
         { type: 'image' },
         { type: 'video' },
@@ -52,7 +53,6 @@ export default {
           ],
         },
       ],
-      options: { layout: 'grid' },
     },
     {
       name: 'backgroundColor',

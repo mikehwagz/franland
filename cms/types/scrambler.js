@@ -55,6 +55,7 @@ export default {
         {
           name: 'image',
           type: 'image',
+          description: 'Recommended dimensions for these images: 612x766',
         },
         {
           name: 'noImage',
