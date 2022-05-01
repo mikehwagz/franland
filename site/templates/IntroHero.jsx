@@ -4,7 +4,7 @@ export default function IntroHero({ data }) {
   return (
     <div class="w-full px-15 m:px-25 pt-40 m:pt-80 pb-122 m:pb-130">
       <h1 class="font-serif text-60 m:text-82 leading-122 tracking-n2">
-        {data.introCopy.replace('{', `<span class="relative">`).replace(
+        {data.introCopy.replace(/{/g, `<span class="relative">`).replace(
           '}',
           `<svg
             class="w-full absolute inset-x-0 top-full"

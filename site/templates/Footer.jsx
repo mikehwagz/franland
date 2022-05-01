@@ -6,7 +6,7 @@ export default function Footer({ links, copyright }) {
     <footer class="relative bg-footer m:pt-130 px-15 m:px-25 flex justify-between items-end text-14 m:text-24 leading-133">
       <div class="m:flex py-20 m:py-40">
         <p class="mb-35 m:mb-0 m:mr-55">
-          {copyright.replaceAll('%s', new Date().getFullYear())}
+          {copyright.replace(/%s/g, new Date().getFullYear())}
         </p>
         <nav class="space-x-20 m:space-x-35">
           {links.map(link => (

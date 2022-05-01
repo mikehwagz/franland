@@ -14,8 +14,8 @@ export default function Marquee({ data }) {
         <div class="marquee--inner js-inner">
           <div class="marquee--el js-el">
             <div class="flex items-center">
-              {data.text.replaceAll(
-                '%s',
+              {data.text.replace(
+                /%s/g,
                 <svg
                   class="w-142 mx-40 m:mx-50"
                   viewBox="0 0 142 33"
