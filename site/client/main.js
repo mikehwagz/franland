@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrambleTextPlugin)
 main()
 
 async function main() {
-  if (process.env.NODE_ENV === 'production') listen()
+  listen()
 
   on(window, 'resize', resize)
   on(document, 'mousemove', mousemove)

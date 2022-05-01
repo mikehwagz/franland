@@ -9,6 +9,7 @@ import video from './components/video'
 import scrambler from './components/scrambler'
 import backToTop from './components/backToTop'
 import projectCarousel from './components/projectCarousel'
+import underline from './components/underline'
 
 let components = {
   header,
@@ -18,6 +19,7 @@ let components = {
   scrambler,
   backToTop,
   projectCarousel,
+  underline,
 }
 
 let s = size()

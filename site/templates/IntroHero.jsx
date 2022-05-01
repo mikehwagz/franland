@@ -16,6 +16,7 @@ export default function IntroHero({ data }) {
               stroke="#2F3336"
               stroke-width="3"
               stroke-linecap="round"
+              data-component="underline"
             />
           </svg></span>`,
         )}
