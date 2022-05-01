@@ -5,13 +5,14 @@ import { projectContent } from '../lib/serializers'
 
 export default function ProjectCarousels({ data }) {
   return (
-    <div class="px-15 m:px-25">
+    <div class="px-15 m:px-25" data-component="bgScroll">
       {data.projects
         .filter(project => project.modules?.length)
         .map(project => (
           <div
             class="w-full max-w-[98.4rem] mx-auto mt-30 mb-145"
             data-component="projectCarousel"
+            data-color={project?.backgroundColor ?? '#FAEEE6'}
           >
             <div class="relative pt-[66%] overflow-hidden cursor-grab active:cursor-grabbing js-carousel">
               <div class="absolute h-full inset-0 flex">

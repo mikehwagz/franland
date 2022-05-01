@@ -10,6 +10,8 @@ export default component((node, ctx) => {
   if (section) {
     offIo = io(section, {
       enter: () => {
+        offIo()
+        offIo = noop
         const len = Math.ceil(node.getTotalLength())
         gsap.fromTo(
           node,
@@ -20,8 +22,8 @@ export default component((node, ctx) => {
           {
             strokeDasharray: len,
             strokeDashoffset: 0,
-            duration: 2,
-            ease: 'quart.inOut',
+            duration: 1,
+            ease: 'cubic.inOut',
           },
         )
       },

@@ -55,6 +55,7 @@
 
   [a-page] {
     visibility: hidden;
+    background-color: var(--theme-color);
   }
 }
 

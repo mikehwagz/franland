@@ -10,6 +10,7 @@ import scrambler from './components/scrambler'
 import backToTop from './components/backToTop'
 import projectCarousel from './components/projectCarousel'
 import underline from './components/underline'
+import bgScroll from './components/bgScroll'
 
 let components = {
   header,
@@ -20,6 +21,7 @@ let components = {
   backToTop,
   projectCarousel,
   underline,
+  bgScroll,
 }
 
 let s = size()

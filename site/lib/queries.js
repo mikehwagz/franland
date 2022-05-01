@@ -83,6 +83,7 @@ export const modules = groq`{
           },
         },
       },
+      'backgroundColor': backgroundColor.hex
     },
   },
 }`
