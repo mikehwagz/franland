@@ -1,8 +1,7 @@
 export default function resolveProductionUrl(document) {
   return `${
-    // window.location.hostname === 'localhost'
-    //   ?
-    'http://localhost:4000'
-    // : 'https://groove.netlify.app'
-  }/preview/${document._type}/${document.slug.current}`
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:4000'
+      : 'https://franland.netlify.app'
+  }/preview/${document.slug.current}`
 }
