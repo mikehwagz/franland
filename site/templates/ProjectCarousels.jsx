@@ -4,7 +4,6 @@ import BlockContent from './BlockContent'
 import { projectContent } from '../lib/serializers'
 
 export default function ProjectCarousels({ data }) {
-  console.log(data.projects)
   return (
     <div class="px-15 m:px-25" data-component="bgScroll">
       {data.projects.map(project => (

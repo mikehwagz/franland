@@ -1,6 +1,5 @@
 import { component } from 'picoapp'
-import { add, remove, each, lerp, on, qs, qsa, wrap, map, norm } from 'martha'
-import poll from '../lib/poll'
+import { add, remove, each, lerp, qs, qsa, map, wrap, noop } from 'martha'
 import hover from '../lib/hover'
 
 export default component((node, ctx) => {
@@ -10,8 +9,8 @@ export default component((node, ctx) => {
 
   const hoverTl = gsap.timeline({ paused: true, defaults: { ease: 'expo' } })
   const imgTl = gsap.timeline({ paused: true, defaults: { ease: 'expo' } })
+  const scrambleTl = gsap.timeline({ repeat: -1 })
 
-  let index = 0
   let cx = 0
   let cy = 0
 
@@ -19,7 +18,10 @@ export default component((node, ctx) => {
     el._json = JSON.parse(el.dataset.dynamicText)
   })
 
-  updateImgs(0)
+  updateImgs({
+    index: 0,
+    duration: 0,
+  })
 
   if (ctx.getState().isMobile && imgWrap) {
     gsap.set(imgWrap, { autoAlpha: 1 })
@@ -27,32 +29,32 @@ export default component((node, ctx) => {
 
   const minLength = Math.min(...els.map(el => el._json.length))
 
-  const offPoll = poll(
-    5000,
-    done => {
-      index = wrap(index + 1, minLength)
+  each(els, el => {
+    const chars = el._json
+      .reduce((acc, x) => acc.concat(x), '')
+      .replace('.', '')
+      .replace(',', '')
 
-      updateImgs()
+    each(el._json, (_, i) => {
+      const index = wrap(i + 1, minLength)
+      const text = el._json[index]
+      const pos = 5 * (i + 1) + i
 
-      each(els, el => {
-        const text = el._json[index]
-        gsap.to(el, {
-          duration: 1,
-          scrambleText: {
-            text,
-            chars: el._json
-              .reduce((acc, x) => acc.concat(x), '')
-              .replace('.', '')
-              .replace(',', ''),
+      scrambleTl
+        .add(() => updateImgs({ index }))
+        .to(
+          el,
+          {
+            duration: 1,
+            scrambleText: {
+              text,
+              chars,
+            },
           },
-          onComplete: () => {
-            done()
-          },
-        })
-      })
-    },
-    false,
-  )
+          pos,
+        )
+    })
+  })
 
   const offHover = hover(node, {
     enter: () => {
@@ -90,7 +92,7 @@ export default component((node, ctx) => {
     })
   })
 
-  function updateImgs(duration = 0.5) {
+  function updateImgs({ index, duration = 0.5 }) {
     imgTl.clear()
     each(imgs, img => {
       const isActive = +img.dataset.index === index
@@ -107,7 +109,7 @@ export default component((node, ctx) => {
   }
 
   return () => {
-    offPoll()
+    scrambleTl.kill()
     offHover()
   }
 })
