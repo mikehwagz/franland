@@ -10,15 +10,17 @@ export default function Footer({ links, copyright }) {
         </p>
         <nav class="space-x-20 m:space-x-35">
           {links.map(link => (
-            <Link link={link}>{link.title}</Link>
+            <Link className="hover:underline" link={link}>
+              {link.title}
+            </Link>
           ))}
         </nav>
       </div>
       <button
-        class="m:py-40 flex absolute m:static top-20 right-15"
+        class="m:py-40 flex absolute m:static top-20 right-15 group"
         data-component="backToTop"
       >
-        Back to top
+        <span class="group-hover:underline">Back to top</span>
         <svg
           class="w-16 m:w-27 ml-8 m:ml-15"
           viewBox="0 0 27 29"
