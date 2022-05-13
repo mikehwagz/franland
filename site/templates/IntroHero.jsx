@@ -7,7 +7,7 @@ export default function IntroHero({ data }) {
         {data.introCopy.replace(/{/g, `<span class="relative">`).replace(
           /}/g,
           `<svg
-            class="w-full absolute inset-x-0 top-full"
+            class="w-full absolute inset-x-0 top-[82%]"
             viewBox="0 0 360 34"
             fill="none"
           >
