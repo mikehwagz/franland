@@ -12,6 +12,17 @@ export default {
   ],
   fields: [
     {
+      name: 'logo',
+      type: 'image',
+      description:
+        'Please upload an SVG logo. For reference, the text color hex code is #2F3336. Make sure the logo is legible at a minimum height of 18px.',
+      group: 'settings',
+      options: {
+        accept: '.svg',
+      },
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'homepage',
       type: 'reference',
       to: [{ type: 'page' }],

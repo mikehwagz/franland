@@ -2,7 +2,7 @@ import { h } from 'hyposcript'
 import Logo from './Logo'
 import Link from './Link'
 
-export default function Header({ links }) {
+export default function Header({ logo, links }) {
   return (
     <header
       class="fixed top-0 inset-x-0 z-9 [--clip-y:100%] m:[--clip-y:0%] [--nav-visibility:hidden]"
@@ -14,7 +14,7 @@ export default function Header({ links }) {
       ></div>
       <div class="relative flex justify-between w-full h-75 m:h-90 bg-theme border-b-2 px-15 m:px-25">
         <a href="/" class="h-full block pt-20 m:pt-25 pb-22 m:pb-27">
-          <Logo cx="h-full w-auto" />
+          <img class="h-full w-auto" src={logo} loading="lazy" />
         </a>
         <button class="m:hidden h-full px-15 absolute top-0 right-0 js-btn">
           <svg class="w-28 js-btnIcon" viewBox="0 0 28 27" fill="none">

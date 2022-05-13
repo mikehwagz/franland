@@ -52,7 +52,7 @@ export default function Document({ site, themeColor, footerColor, children }) {
               '--footer-color': footerColor,
             }}
           >
-            <Header links={site.menuLinks} />
+            <Header logo={site.logo} links={site.menuLinks} />
             <main class="bg-theme">{children}</main>
             <Footer links={site.footerLinks} copyright={site.copyrightText} />
           </div>
