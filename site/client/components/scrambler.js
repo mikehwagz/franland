@@ -1,11 +1,12 @@
 import { component } from 'picoapp'
-import { add, remove, each, lerp, qs, qsa, map, wrap, noop } from 'martha'
+import { add, remove, each, lerp, qs, qsa, map, wrap } from 'martha'
 import hover from '../lib/hover'
 
 export default component((node, ctx) => {
   const els = qsa('[data-dynamic-text]', node)
   const imgWrap = qs('.js-imgWrap', node)
   const imgs = qsa('[data-index]', node)
+  const speed = +node.dataset.speed
 
   const hoverTl = gsap.timeline({ paused: true, defaults: { ease: 'expo' } })
   const imgTl = gsap.timeline({ paused: true, defaults: { ease: 'expo' } })
@@ -38,7 +39,7 @@ export default component((node, ctx) => {
     each(el._json, (_, i) => {
       const index = wrap(i + 1, minLength)
       const text = el._json[index]
-      const pos = 5 * (i + 1) + i
+      const pos = speed * (i + 1) + i
 
       scrambleTl
         .add(() => updateImgs({ index }))

@@ -9,6 +9,7 @@ export default function Scrambler({ data }) {
     <div
       class="relative px-15 m:px-25 pt-40 m:pt-80 pb-20 m:pb-90 font-serif text-35 m:text-62 tracking-n2"
       data-component="scrambler"
+      data-speed="3"
       style={{ backgroundColor }}
     >
       <div class="mb-60 m:mb-0">
@@ -26,7 +27,6 @@ export default function Scrambler({ data }) {
                 >
                   {text[0]}
                 </span>{' '}
-                <br class="hidden m:inline" />
               </>
             )
           }
