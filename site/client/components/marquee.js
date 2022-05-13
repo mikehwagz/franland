@@ -1,12 +1,26 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { rect } from 'martha'
-import io from '../lib/io'
+import { noop, rect } from 'martha'
+import hover from '../lib/hover'
 
 export default component((node, ctx) => {
   let { inner, el } = choozy(node)
   let prevReps = 0
   let reps = 0
+
+  let isReversed = node.dataset?.direction === 'right'
+  let pauseOnHover = node.hasAttribute('data-pause-on-hover')
+  let speed = +node.dataset?.speed ?? 0.5
+  let x = 0
+  let tl = null
+  let offHover = noop
+
+  if (pauseOnHover) {
+    offHover = hover(node, {
+      enter: () => tl && tl.pause(),
+      leave: () => tl && tl.play(),
+    })
+  }
 
   ctx.on('resize', () => {
     let w = rect(el).width
@@ -25,19 +39,24 @@ export default component((node, ctx) => {
       }
     }
 
-    node.style.setProperty('--x', Math.round(w))
+    x = Math.round(w)
 
     prevReps = reps
+
+    tl && tl.kill()
+    tl = gsap.timeline({ repeat: -1 }).fromTo(
+      inner,
+      { x: isReversed ? -x : 0 },
+      {
+        x: isReversed ? 0 : -x,
+        duration: x / (100 * speed),
+        ease: 'none',
+      },
+    )
   })
 
-  let offIo = io(node, {
-    enter: () => {
-      inner.style.animationPlayState = null
-    },
-    exit: () => {
-      inner.style.animationPlayState = 'paused'
-    },
-  })
-
-  return () => offIo()
+  return () => {
+    tl && tl.kill()
+    offHover()
+  }
 })

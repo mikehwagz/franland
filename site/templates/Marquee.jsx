@@ -7,7 +7,7 @@ export default function Marquee({ data }) {
       <Link
         class="marquee font-serif text-50 m:text-82 leading-122 tracking-n2"
         data-component="marquee"
-        style={{ '--speed': 0.8 }}
+        data-speed="0.8"
         data-pause-on-hover
         link={data.link}
       >

@@ -85,24 +85,6 @@
   }
 }
 
-@keyframes marqueeL {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(calc(-1px * var(--x)), 0, 0);
-  }
-}
-
-@keyframes marqueeR {
-  0% {
-    transform: translate3d(calc(-1px * var(--x)), 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 .marquee {
   overflow: hidden;
 
@@ -110,22 +92,8 @@
     display: flex;
     justify-content: flex-start;
     white-space: nowrap;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-    animation-duration: calc(var(--x) / (100 * var(--speed)) * 1s);
     will-change: transform;
-    animation-name: marqueeL;
-
-    [data-direction='right'] & {
-      animation-name: marqueeR;
-    }
-    
-    [data-pause-on-hover]:hover & {
-      animation-play-state: paused;
-    }
   }
-
 
   &--el {
     flex-grow: 0;
