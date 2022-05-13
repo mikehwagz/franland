@@ -7,8 +7,11 @@ export const link = (additionalGroq = '') => groq`{
     title,
   },
   _type == 'pageLink' => {
-    'slug': page->slug.current,
     'isHomepage': *[_type == 'site'][0].homepage._ref == page->_id,
+    ...(page-> {
+      'slug': slug.current,
+      'mobileMenuLinkColor': mobileMenuLinkColor.hex,
+    }),
   },
   _type == 'externalLink' => {
     url,

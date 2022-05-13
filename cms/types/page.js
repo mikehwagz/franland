@@ -43,6 +43,11 @@ export default {
       group: 'settings',
     },
     {
+      name: 'mobileMenuLinkColor',
+      type: 'color',
+      group: 'settings',
+    },
+    {
       name: 'modules',
       type: 'modules',
       group: 'modules',

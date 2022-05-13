@@ -28,7 +28,10 @@ export default function Header({ links }) {
           <nav class="header-nav-inner h-[var(--nav-height)] m:h-full m:flex items-center gap-x-50 leading-100">
             {links.map(link => (
               <Link
-                className="w-full m:w-auto px-15 m:px-0 pt-20 m:pt-0 pb-20 last:pb-22 m:!pb-0 m:h-full flex items-center border-b-2 last:border-b-0 m:!border-b-0 odd:bg-[#CDE4F5] even:bg-[#FFCCFD] m:!bg-transparent group focus-visible:underline focus:outline-none js-links"
+                className="w-full m:w-auto px-15 m:px-0 pt-20 m:pt-0 pb-20 last:pb-22 m:!pb-0 m:h-full flex items-center border-b-2 last:border-b-0 m:!border-b-0 m:!bg-transparent group focus-visible:underline focus:outline-none js-links"
+                style={{
+                  backgroundColor: link.mobileMenuLinkColor ?? '#FAEEE6',
+                }}
                 link={link}
               >
                 <div class="w-16 h-16 rounded-full border-2 mr-10 group-hover:bg-charcoal"></div>
