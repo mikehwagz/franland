@@ -66,5 +66,12 @@ export default {
       type: 'image',
       group: 'seo',
     },
+    {
+      name: 'noindex',
+      title: 'Discourage search engines from indexing this site?',
+      description: 'It is up to search engines to honor this request.',
+      type: 'boolean',
+      group: 'seo',
+    },
   ],
 }

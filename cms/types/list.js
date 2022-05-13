@@ -17,6 +17,8 @@ export default {
       name: 'listItems',
       type: 'array',
       of: [{ type: 'string' }],
+      description:
+        'Create a hyperlink like so [This is a link](https://google.com)',
     },
   ],
   preview: {
