@@ -20,7 +20,7 @@ export default function List({ data }) {
     return item
   })
   return (
-    <div class="px-15 m:px-25 pt-40 pb-60 m:pb-100 m:flex gap-x-20">
+    <div class="px-15 m:px-25 pt-40 pb-60 m:pb-100 m:flex items-baseline gap-x-20">
       <div class="m:w-2/12 m:pt-19 mb-20 m:mb-0">
         <h2 class="text-28">{data.title}:</h2>
       </div>
