@@ -21,6 +21,7 @@ export default function Link({
       className={className}
       target={link.openInNewTab ? '_blank' : null}
       rel={link.openInNewTab ? 'noopener noreferrer' : null}
+      a-ignore={link._type === 'externalLink' ? '' : null}
       {...rest}
     >
       {children}
