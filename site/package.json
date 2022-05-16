@@ -20,7 +20,7 @@
     "focus-trap": "^6.7.3",
     "focus-visible": "^5.2.0",
     "fontfaceobserver": "^2.1.0",
-    "gsap": "^3.10.2",
+    "gsap": "file:gsap-bonus.tgz",
     "martha": "^4.0.4",
     "picoapp": "^3.6.2",
     "quicklink": "^2.2.0"

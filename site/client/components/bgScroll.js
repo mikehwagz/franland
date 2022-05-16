@@ -1,6 +1,7 @@
 import { component } from 'picoapp'
-import { each, qsa, qs } from 'martha'
+import { each, qsa } from 'martha'
 import { scrollPercentage } from '../lib/inview'
+import gsap from 'gsap'
 
 export default component((node, ctx) => {
   const els = qsa('[data-color]', node)

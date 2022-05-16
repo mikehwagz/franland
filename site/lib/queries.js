@@ -22,9 +22,12 @@ export const link = (additionalGroq = '') => groq`{
 export const image = groq`{
   ...(asset-> {
     '_id': _id,
+    'url': url,
     'lqip': metadata.lqip,
     'alt': altText,
     'aspect': metadata.dimensions.aspectRatio,
+    'width': metadata.dimensions.width,
+    'height': metadata.dimensions.height,
   }),
 }`
 

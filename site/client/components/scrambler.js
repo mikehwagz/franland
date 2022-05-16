@@ -1,6 +1,7 @@
 import { component } from 'picoapp'
 import { add, remove, each, lerp, qs, qsa, map, wrap } from 'martha'
 import hover from '../lib/hover'
+import gsap from 'gsap'
 
 export default component((node, ctx) => {
   const els = qsa('[data-dynamic-text]', node)

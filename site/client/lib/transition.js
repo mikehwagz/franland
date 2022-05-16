@@ -1,3 +1,5 @@
+import gsap from 'gsap'
+
 export default {
   async enter({ from, to }) {
     window.scroll(0, 0)

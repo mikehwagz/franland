@@ -3,13 +3,21 @@ import manifest from '../manifest.json'
 import Header from './Header'
 import Footer from './Footer'
 
-export default function Document({ site, themeColor, footerColor, children }) {
+export default function Document({ page, site, children }) {
+  const metaTitle = page.title ?? site.title
+  const metaDescription = page.description ?? site.description
+  const openGraphImage = page.openGraphImage ?? site.openGraphImage
+  const themeColor = page.themeColor ?? '#FAEEE6'
+  const footerColor = page.footerColor ?? page.themeColor ?? '#FAEEE6'
+
   return `<!DOCTYPE html>${(
     <html lang="en">
       <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible" />
+        <meta name="google" content="notranslate" />
+        <meta http-equiv="Content-Language" content="en" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
         {site.noindex ? (
           <meta name="robots" content="noindex, nofollow" />
@@ -29,18 +37,63 @@ export default function Document({ site, themeColor, footerColor, children }) {
           type="font/woff2"
           crossorigin
         />
-
         <link rel="preload" href={`/${manifest['main.css']}`} as="style" />
         <link rel="preload" href={`/${manifest['main.js']}`} as="script" />
 
-        <title>franland</title>
+        <title>
+          {page.title} | {site.title}
+        </title>
+        <meta content={metaDescription} name="description" />
+
+        {/* Open Graph */}
+        <meta content="website" property="og:type" />
+        <meta content={site.url} property="og:url" />
+        <meta content={metaTitle} property="og:site_name" />
+        <meta content={metaTitle} property="og:title" />
+        <meta content={metaDescription} property="og:description" />
+        <meta content={openGraphImage.url} property="og:image" />
+        <meta content={openGraphImage.alt} property="og:image:alt" />
+        <meta content={openGraphImage.width} property="og:image:width" />
+        <meta content={openGraphImage.height} property="og:image:height" />
+
+        {/* Twitter Card */}
+        <meta content="summary_large_image" name="twitter:card" />
+        <meta content={site.url} name="twitter:url" />
+        <meta content={metaTitle} name="twitter:title" />
+        <meta content={metaDescription} name="twitter:description" />
+        <meta content={openGraphImage.src} name="twitter:image" />
+        <meta content={openGraphImage.alt} name="twitter:image:alt" />
+
+        {/* Favicons */}
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/icons/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/icons/safari-pinned-tab.svg"
+          color="#2f3336"
+        />
+        <link rel="shortcut icon" href="/icons/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#2f3336" />
+        <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+        <meta name="theme-color" content="#ffffff"></meta>
 
         <link rel="stylesheet" href={`/${manifest['main.css']}`} />
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"
-          defer
-        ></script>
-        <script src="/ScrambleTextPlugin.min.js" defer></script>
         <script src={`/${manifest['main.js']}`} defer></script>
       </head>
       <body>

@@ -6,6 +6,8 @@ import { create } from 'alio'
 import app from './app'
 import fonts from './lib/fonts'
 import transition from './lib/transition'
+import gsap from 'gsap'
+import ScrambleTextPlugin from 'gsap/ScrambleTextPlugin'
 
 gsap.registerPlugin(ScrambleTextPlugin)
 

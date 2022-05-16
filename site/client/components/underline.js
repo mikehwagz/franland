@@ -1,6 +1,7 @@
 import { noop } from 'martha'
 import { component } from 'picoapp'
 import io from '../lib/io'
+import gsap from 'gsap'
 
 export default component((node, ctx) => {
   const section = node.closest('section')

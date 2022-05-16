@@ -2,6 +2,7 @@ import { component } from 'picoapp'
 import choozy from 'choozy'
 import { on, rect, noop, each, toggle } from 'martha'
 import { createFocusTrap } from 'focus-trap'
+import gsap from 'gsap'
 
 export default component((node, ctx) => {
   const { backdrop, links, btn, btnIcon } = choozy(node)

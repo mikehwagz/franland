@@ -2,6 +2,7 @@ import { component } from 'picoapp'
 import choozy from 'choozy'
 import { noop, rect } from 'martha'
 import hover from '../lib/hover'
+import gsap from 'gsap'
 
 export default component((node, ctx) => {
   let { inner, el } = choozy(node)
