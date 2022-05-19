@@ -1,11 +1,14 @@
 import { component } from 'picoapp'
-import { add, remove, each, lerp, qs, qsa, map, wrap } from 'martha'
+import { add, remove, each, lerp, qs, qsa, map, wrap, rect } from 'martha'
 import hover from '../lib/hover'
 import gsap from 'gsap'
 
 export default component((node, ctx) => {
   const els = qsa('[data-dynamic-text]', node)
   const imgWrap = qs('.js-imgWrap', node)
+  const textWrap = qs('.js-textWrap', node)
+  const text = qs('.js-text', node)
+  const refText = qs('.js-refText', node)
   const imgs = qsa('[data-index]', node)
   const speed = +node.dataset.speed
 
@@ -109,6 +112,13 @@ export default component((node, ctx) => {
     })
     imgTl.restart()
   }
+
+  ctx.on('resize', () => {
+    const lineHeight = rect(refText).height
+    const lineCount = rect(text).height / lineHeight
+
+    textWrap.style.minHeight = lineHeight * (lineCount + 1) + 'px'
+  })
 
   return () => {
     scrambleTl.kill()

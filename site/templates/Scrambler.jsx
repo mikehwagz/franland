@@ -12,25 +12,30 @@ export default function Scrambler({ data }) {
       data-speed="3"
       style={{ backgroundColor }}
     >
-      <div class="mb-60 m:mb-0">
-        {content.map(({ _type, text }) => {
-          if (_type === 'staticText') {
-            return <>{text} </>
-          }
+      <div class="absolute invisible js-refText" aria-hidden="true">
+        X
+      </div>
+      <div class="mb-60 m:mb-0 js-textWrap">
+        <div class="js-text">
+          {content.map(({ _type, text }) => {
+            if (_type === 'staticText') {
+              return <>{text} </>
+            }
 
-          if (_type === 'dynamicText') {
-            return (
-              <>
-                <span
-                  class="font-sans tracking-normal"
-                  data-dynamic-text={escape(JSON.stringify(text))}
-                >
-                  {text[0]}
-                </span>{' '}
-              </>
-            )
-          }
-        })}
+            if (_type === 'dynamicText') {
+              return (
+                <>
+                  <span
+                    class="font-sans tracking-normal"
+                    data-dynamic-text={escape(JSON.stringify(text))}
+                  >
+                    {text[0]}
+                  </span>{' '}
+                </>
+              )
+            }
+          })}
+        </div>
       </div>
       {images?.length ? (
         <div
