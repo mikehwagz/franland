@@ -7,8 +7,8 @@ export default {
         sites: [
           {
             title: 'Production',
-            apiId: '769621ec-5874-4d31-90c8-dec8e3d786b0',
-            buildHookId: '626f13cc7b18fe2674a8ec11',
+            apiId: 'a95b5880-0bb3-4305-a164-73ae37e7b6d9',
+            buildHookId: '6286923114351618ef9a85c2',
             name: 'franland',
           },
         ],
