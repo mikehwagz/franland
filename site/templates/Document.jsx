@@ -86,10 +86,10 @@ export default function Document({ page, site, children }) {
         <link
           rel="mask-icon"
           href="/icons/safari-pinned-tab.svg"
-          color="#2f3336"
+          color="#000000"
         />
         <link rel="shortcut icon" href="/icons/favicon.ico" />
-        <meta name="msapplication-TileColor" content="#2f3336" />
+        <meta name="msapplication-TileColor" content="#ff0000" />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff"></meta>
 
