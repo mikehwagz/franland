@@ -26,7 +26,7 @@ export default function List({ data }) {
       </div>
       <ul class="m:w-10/12 flex flex-wrap">
         {listItems.map(item => (
-          <li class="m:w-1/2 font-serif text-31 m:text-38 leading-150 tracking-n2">
+          <li class="w-full m:w-1/2 font-serif text-31 m:text-38 leading-150 tracking-n2">
             {item?.url ? (
               <Link className="hover:opacity-75" link={item}>
                 {item.title}
