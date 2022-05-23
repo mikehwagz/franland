@@ -2,14 +2,14 @@ import { h } from 'hyposcript'
 import escape from 'lodash.escape'
 import Img from './Img'
 
-export default function Scrambler({ data }) {
+export default function Scrambler({ data, site }) {
   const { content, images, backgroundColor } = data
 
   return (
     <div
       class="relative px-15 m:px-25 pt-40 m:pt-80 pb-20 m:pb-90 font-serif text-35 m:text-62 tracking-n2"
       data-component="scrambler"
-      data-speed="3"
+      data-speed={site.scramblerSpeed ?? 5}
       style={{ backgroundColor }}
     >
       <div class="absolute invisible js-refText" aria-hidden="true">

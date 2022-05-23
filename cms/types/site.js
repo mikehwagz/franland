@@ -29,6 +29,14 @@ export default {
       group: 'settings',
       validation: Rule => Rule.required(),
     },
+    {
+      name: 'scramblerSpeed',
+      type: 'number',
+      initialValue: 3,
+      group: 'settings',
+      description: 'Set the scrambler module delay in seconds',
+      validation: Rule => Rule.required(),
+    },
     customLink({
       hasTitle: true,
       name: 'menuLinks',

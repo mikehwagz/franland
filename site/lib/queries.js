@@ -116,4 +116,5 @@ export const site = groq`'site': *[_type == 'site'] | order(_updatedAt desc)[0] 
   copyrightText,
   noindex,
   'logo': logo.asset->url,
+  scramblerSpeed,
 }`

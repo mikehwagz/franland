@@ -19,7 +19,7 @@ const MODULES = {
   projectCarousels: ProjectCarousels,
 }
 
-export default function Module({ data, index }) {
+export default function Module({ data, index, site }) {
   if (data._type === 'spacer') {
     return (
       <section
@@ -36,7 +36,7 @@ export default function Module({ data, index }) {
 
   return Component ? (
     <section class={cx('relative', { 'pt-75 m:pt-90': index === 0 })}>
-      <Component data={data} />
+      <Component data={data} site={site} />
     </section>
   ) : null
 }
